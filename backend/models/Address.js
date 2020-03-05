@@ -58,8 +58,4 @@ let Address = new Schema({
 collection: 'addresses'
 });
 
-let format = new Schema({
-
-});
-
 module.exports = mongoose.model('Address', Address);
