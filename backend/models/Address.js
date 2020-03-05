@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const country = require('../models/Country');
 
 // Define collection and schema
 // let Address = new Schema({
