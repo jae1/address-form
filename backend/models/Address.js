@@ -1,6 +1,40 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+let Address = new Schema({
+  country: String,
+  address1: {
+    type: String,
+    required: [true, 'Address required.'],
+    //match: "^(\w*\s*[\#\-\,\/\.\(\)\&]*)+$"
+  },
+
+  address2: String,
+  address3: String,
+  locale: {
+    type: String,
+    required: [true, 'Locale required.'],
+    //match: "^(\w*\s*[\#\-\,\/\.\(\)\&]*)+$"
+  },
+
+  region: {
+    type: String,
+    required: [true, 'Region required.'],
+    //match: "^(\w*\s*[\#\-\,\/\.\(\)\&]*)+$"
+  },
+
+  postalCode: {
+    type: String,
+    required: [true, 'Postal Code required.'],
+    //match: "^(\w*\s*[\#\-\,\/\.\(\)\&]*)+$"
+  }
+}, {
+  collection: 'addresses'
+});
+
+module.exports = mongoose.model('Address', Address);
+
+
 // Define collection and schema
 // let Address = new Schema({
 //       country,
@@ -45,17 +79,3 @@ const Schema = mongoose.Schema;
 // }, {
 //    collection: 'addresses'
 // });
-
-let Address = new Schema({
-   country: String,
-   address1: String,
-   address2: String,
-   address3: String,
-   locale: String,
-   region: String,
-   postalCode: String
-}, {
-collection: 'addresses'
-});
-
-module.exports = mongoose.model('Address', Address);
