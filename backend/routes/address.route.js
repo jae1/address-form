@@ -53,19 +53,6 @@ addressRoute.route('/read/:id').get((req, res) => {
   })
 })
 
-// Search for single Address
-addressRoute.route('/search').get((req, res) => {
-  Address.findOne(req.query, (error, data) => {
-    if (error) {
-      // return next(error)
-      res.status(500).send('Error');
-    }
-    res.json(data);
-    console.log('Search successful.')
-  })
-
-})
-
 // Update Address
 addressRoute.route('/update/:id').put((req, res, next) => {
   Address.findOneAndUpdate(req.params.id, {
