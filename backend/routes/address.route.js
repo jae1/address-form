@@ -80,4 +80,16 @@ addressRoute.route('/delete/:id').delete((req, res, next) => {
   })
 })
 
+
+// Search for single address
+addressRoute.route('/search').get((req, res) => {
+  Address.findOne(req.query, (error, data) => {
+    if (error) {
+      // return next(error)
+      res.status(500).send('Error');
+    }
+    res.json(data);
+    console.log('Search successful.')
+  })
+})
 module.exports = addressRoute;

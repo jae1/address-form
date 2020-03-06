@@ -22,10 +22,14 @@ export class ApiService {
       )
   }
 
-  // // Get all Addresses
-  // getAddresses() {
-  //   return this.http.get(`${this.baseUri}`);
-  // }
+  // Get all Addresses
+  searchAddress() {
+    return this.http.get(`${this.baseUri}/search`).pipe(
+      map((res: Response) => {
+        return res || {}
+      })
+    )
+  }
 
   // Get all Addresses
   getAddresses() {
@@ -51,6 +55,17 @@ export class ApiService {
       catchError(this.errorMgmt)
     )
   }
+
+    // Get Address by ID
+  getAddressBy(id): Observable<any> {
+      let url = `${this.baseUri}/read/${id}`;
+      return this.http.get(url, {headers: this.headers}).pipe(
+        map((res: Response) => {
+          return res || {}
+        }),
+        catchError(this.errorMgmt)
+      )
+    }
 
   // Update Address
   updateAddress(id, data): Observable<any> {

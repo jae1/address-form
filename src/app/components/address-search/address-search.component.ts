@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { ApiService } from '../../service/api.service';
 import { Component, OnInit, NgZone } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 
 import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
 import { FormlyFormOptions, FormlyFieldConfig, FormlyConfig } from '@ngx-formly/core';
@@ -53,7 +53,7 @@ export class AddressSearchComponent implements OnInit {
     if (!this.form.valid) {
       return false;
     } else {
-      this.apiService.getAddresses()
+      this.apiService.searchAddress()
       .subscribe(res => {
         this.router.navigateByUrl('/address-list');
         console.log('Loaded')
