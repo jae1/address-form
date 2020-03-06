@@ -66,6 +66,28 @@ addressRoute.route('/search').get((req, res) => {
   })
 })
 
+addressRoute.route('/searchAll').get((req, res) => {
+  var check = req.body.address1;
+  console.log(check);
+  var query = {
+    "address1": new RegExp(req.body.address1, "gi"),
+    "address2": new RegExp(req.body.address2, "gi"),
+    "address3": new RegExp(req.body.address3, "gi"),
+    "region": new RegExp(req.body.region, "gi"),
+    "locale": new RegExp(req.body.locale, "gi"),
+    "postalCode": new RegExp(req.body.postalCode, "gi"),
+    "country": new RegExp(req.body.country, "gi")
+  };
+  Address.find(query, (error, data) => {
+    if (error) {
+      // return next(error)
+      res.status(500).send('Error');
+    }
+    res.json(data);
+    console.log('Search successful.')
+  })
+})
+
 // Search multiple
 addressRoute.route('/searchMulti').get((req, res) => {
   Address.find(req.query, (error, data) => {
