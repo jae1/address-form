@@ -763,6 +763,12 @@
             "pattern": "^$",
             "type": "string"
           },
+
+          "locale": {
+            "title": "City",
+            "pattern": "^[A-z]+$",
+            "type": "string"
+          },
           "region": {
             "title": "State",
             "pattern": "^[A-z]+$",
@@ -1016,11 +1022,6 @@
                 }
               }
             }
-          },
-          "locale": {
-            "title": "City",
-            "pattern": "^[A-z]+$",
-            "type": "string"
           },
           "postalCode": {
             "title": "Zip Code",

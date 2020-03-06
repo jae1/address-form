@@ -27,7 +27,7 @@ export class AddressCreateComponent implements OnInit {
     private http: HttpClient,
   ) {}
 
-  ngOnInit(){
+  ngOnInit() {
     this.http.get<any>(`assets/json-schema/CountrySchema.json`).pipe(
       tap(({ schema, model }) => {
         // this.type = 'oneOf';
