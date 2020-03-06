@@ -9,25 +9,32 @@ let Address = new Schema({
     match: [/^(\w*\s*[\#\-\,\/\.\(\)\&]*)+$/, 'is invalid']
   },
 
-  address2: String,
-  address3: String,
+  address2: {
+    type: String,
+    match: [/^(\w*\s*[\#\-\,\/\.\(\)\&]*)+$/, 'is invalid']
+  },
+
+  address3:{
+    type: String,
+    match: [/^(\w*\s*[\#\-\,\/\.\(\)\&]*)+$/, 'is invalid']
+  },
+
   locale: {
     type: String,
     required: [true, 'Locale is required.'],
-    match: [/^[A-z]+$/, 'is invalid']
-
+    match: [/^(\w*\s*[\#\-\,\/\.\(\)\&]*)+$/, 'is invalid']
   },
 
   region: {
     type: String,
     required: [true, 'Region is required.'],
-    match: [/^[A-z]+$/, 'is invalid']
+    match: [/^(\w*\s*[\#\-\,\/\.\(\)\&]*)+$/, 'is invalid']
   },
 
   postalCode: {
     type: String,
     required: [true, 'Postal Code is required.'],
-    match: [/^\d{5}$/, 'is invalid']
+    match: [/^(\w*\s*)+$/, 'is invalid']
 
   }
 }, {

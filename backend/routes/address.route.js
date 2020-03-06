@@ -66,6 +66,18 @@ addressRoute.route('/search').get((req, res) => {
   })
 })
 
+// Search multiple
+addressRoute.route('/searchMulti').get((req, res) => {
+  Address.find(req.query, (error, data) => {
+    if (error) {
+      // return next(error)
+      res.status(500).send('Error');
+    }
+    res.json(data);
+    console.log('Search successful.')
+  })
+})
+
 // Update Address
 addressRoute.route('/update/:id').put((req, res, next) => {
   Address.findOneAndUpdate(req.params.id, {
