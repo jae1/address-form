@@ -37,12 +37,12 @@ export class AddressEditComponent implements OnInit {
     let id = this.actRoute.snapshot.paramMap.get('id');
     this.getAddress(id);
     this.editForm = this.fb.group({
-      address1: [[Validators.required]],
+      address1: ['', [Validators.required]],
       address2: [''],
       address3: [''],
-      locale: ['', [Validators.required]],
-      region: ['', [Validators.required]],
-      postalCode: ['', [Validators.required, Validators.pattern('^[0-9]{5}')]],
+      city: ['', [Validators.required]],
+      state: ['', [Validators.required]],
+      zip: ['', [Validators.required, Validators.pattern('^[0-9]{5}')]],
       country: ['', [Validators.required]]
     })
   }
@@ -65,9 +65,9 @@ export class AddressEditComponent implements OnInit {
         address1: data['address1'],
         address2: data['address2'],
         address3: data['address3'],
-        locale: data['locale'],
-        region: data['region'],
-        postalCode: data['postalCode'],
+        city: data['city'],
+        state: data['state'],
+        zip: data['zip'],
         country: data['country']
       });
     });
@@ -78,9 +78,9 @@ export class AddressEditComponent implements OnInit {
       address1: ['', [Validators.required]],
       address2: [''],
       address3: [''],
-      locale: ['', [Validators.required]],
-      region: ['', [Validators.required]],
-      postalCode: ['', [Validators.required, Validators.pattern('^[0-9]{5}')]],
+      city: ['', [Validators.required]],
+      state: ['', [Validators.required]],
+      zip: ['', [Validators.required, Validators.pattern('^[0-9]{5}')]],
       country: ['', [Validators.required]]
     });
   };
