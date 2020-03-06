@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AddressCreateComponent } from './components/address-create/address-create.component';
 import { AddressListComponent } from './components/address-list/address-list.component';
 import { AddressEditComponent } from './components/address-edit/address-edit.component';
+import { AddressSearchComponent } from './components/address-search/address-search.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,7 +20,6 @@ import { ArrayTypeComponent } from './components/type/array.type';
 import { ObjectTypeComponent } from './components/type/object.type';
 import { MultiSchemaTypeComponent } from './components/type/multischema.type';
 import { NullTypeComponent } from './components/type/null.type';
-import { AddressSearchComponent } from './components/address-search/address-search.component';
 
 
 export function minItemsValidationMessage(err, field: FormlyFieldConfig) {
