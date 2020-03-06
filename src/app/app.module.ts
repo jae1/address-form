@@ -19,6 +19,7 @@ import { ArrayTypeComponent } from './components/type/array.type';
 import { ObjectTypeComponent } from './components/type/object.type';
 import { MultiSchemaTypeComponent } from './components/type/multischema.type';
 import { NullTypeComponent } from './components/type/null.type';
+import { AddressSearchComponent } from './components/address-search/address-search.component';
 
 
 export function minItemsValidationMessage(err, field: FormlyFieldConfig) {
@@ -69,7 +70,8 @@ export function constValidationMessage(err, field: FormlyFieldConfig) {
     ArrayTypeComponent,
     ObjectTypeComponent,
     MultiSchemaTypeComponent,
-    NullTypeComponent
+    NullTypeComponent,
+    AddressSearchComponent
   ],
   imports: [
     BrowserModule,
