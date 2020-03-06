@@ -67,8 +67,6 @@ addressRoute.route('/search').get((req, res) => {
 })
 
 addressRoute.route('/searchAll').get((req, res) => {
-  var check = req.body.address1;
-  console.log(check);
   var query = {
     "address1": new RegExp(req.body.address1, "gi"),
     "address2": new RegExp(req.body.address2, "gi"),
