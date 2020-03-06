@@ -66,6 +66,7 @@ addressRoute.route('/search').get((req, res) => {
   })
 })
 
+//Test same address in two countries
 addressRoute.route('/searchAll').get((req, res) => {
   var query = {
     "address1": new RegExp(req.body.address1, "gi"),
