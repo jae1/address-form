@@ -1,37 +1,66 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const country = require('../models/Country');
+
+// Define collection and schema
+// let Address = new Schema({
+//       country,
+//       address1: [{
+//          display: String,
+//          columnName: String,
+//          pattern: String
+//       }],
+
+//       address2: [{
+//          display: String,
+//          columnName: String,
+//          pattern: String
+//       }],
+
+//       address3: [{
+//          display: String,
+//          columnName: String,
+//          pattern: String
+//       }],
+
+//       locale: [{
+//          display: String,
+//          columnName: String,
+//          pattern: String
+//       }],
+
+//       region: [{
+//          display: String,
+//          columnName: String,
+//          pattern: String,
+//          name: [String]
+//       }],
+
+//       postalCode: [{
+//          display: String,
+//          columnName: String,
+//          pattern: String
+//       }],
+
+//       required: [String]
+// }, {
+//    collection: 'addresses'
+// });
 
 let Address = new Schema({
-  country: String,
-  address1: {
-    type: String,
-    required: [true, 'Address required.'],
-    match: [/^(\w*\s*[\#\-\,\/\.\(\)\&]*)+$/, 'is invalid']
-  },
-
-  address2: String,
-  address3: String,
-  locale: {
-    type: String,
-    required: [true, 'Locale required.'],
-    match: [/^[A-z]+$/, 'is invalid']
-
-  },
-
-  region: {
-    type: String,
-    required: [true, 'Region required.'],
-    match: [/^[A-z]+$/, 'is invalid']
-  },
-
-  postalCode: {
-    type: String,
-    required: [true, 'Postal Code required.'],
-    match: [/^\d{5}$/, 'is invalid']
-
-  }
+   country: String,
+   address1: String,
+   address2: String,
+   address3: String,
+   locale: String,
+   region: String,
+   postalCode: String
 }, {
-  collection: 'addresses'
+collection: 'addresses'
+});
+
+let format = new Schema({
+
 });
 
 module.exports = mongoose.model('Address', Address);
