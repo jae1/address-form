@@ -42,8 +42,8 @@ export class AddressSearchComponent implements OnInit {
     ).subscribe(jsonSchema => {console.log(jsonSchema)});
   }
 
-  readAddress(){
-    this.apiService.getAddresses().subscribe((data) => {
+  searchAddresses(){
+    this.apiService.searchAddresses().subscribe((data) => {
      this.Address = data;
     })    
   }
@@ -53,7 +53,7 @@ export class AddressSearchComponent implements OnInit {
     if (!this.form.valid) {
       return false;
     } else {
-      this.apiService.searchAddress()
+      this.apiService.searchAddresses()
       .subscribe(res => {
         this.router.navigateByUrl('/address-list');
         console.log('Loaded')

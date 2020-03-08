@@ -779,10 +779,6 @@
                 "templateOptions": {
                   "options": [
                     {
-                      "value": null,
-                      "label": "-----Select State-----"
-                    },
-                    {
                       "label": "Alabama",
                       "value": "AL"
                     },

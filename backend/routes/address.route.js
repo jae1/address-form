@@ -53,6 +53,37 @@ addressRoute.route('/read/:id').get((req, res) => {
   })
 })
 
+addressRoute.route('/search').get((req, res) => {
+  Address.findOne(req.query, (error, data) => {
+    if (error) {
+      // return next(error)
+      res.status(500).send('Error');
+    }
+    res.json(data);
+    console.log('Search successful.')
+  })
+})
+
+addressRoute.route('/searchAll').get((req, res) => {
+  var query = {
+    "address1": new RegExp(req.body.address1, "gi"),
+    "address2": new RegExp(req.body.address2, "gi"),
+    "address3": new RegExp(req.body.address3, "gi"),
+    "region": new RegExp(req.body.region, "gi"),
+    "locale": new RegExp(req.body.locale, "gi"),
+    "postalCode": new RegExp(req.body.postalCode, "gi"),
+    "country": new RegExp(req.body.country, "gi")
+  };
+  Address.find(query, (error, data) => {
+    if (error) {
+      // return next(error)
+      res.status(500).send('Error');
+    }
+    res.json(data);
+    console.log('Search successful.')
+  })
+})
+
 // Update Address
 addressRoute.route('/update/:id').put((req, res, next) => {
   Address.findOneAndUpdate(req.params.id, {

@@ -23,8 +23,8 @@ export class ApiService {
   }
 
   // Get all Addresses
-  searchAddress() {
-    return this.http.get(`${this.baseUri}/search`).pipe(
+  searchAddresses() {
+    return this.http.get(`${this.baseUri}/searchAll`).pipe(
       map((res: Response) => {
         return res || {}
       })
