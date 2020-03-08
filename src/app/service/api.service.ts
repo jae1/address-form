@@ -16,15 +16,18 @@ export class ApiService {
   // Create Address
   createAddress(data): Observable<any> {
     let url = `${this.baseUri}/create`;
-    return this.http.post(url, data)
-      .pipe(
+    return this.http
+    .post(url, data)
+    .pipe(
         catchError(this.errorMgmt)
       )
   }
 
   // Get all Addresses
-  searchAddresses() {
-    return this.http.get(`${this.baseUri}/searchAll`).pipe(
+  searchAddresses(): Observable<any> {
+    return this.http
+    .get(`${this.baseUri}/searchAll`)
+    .pipe(
       map((res: Response) => {
         return res || {}
       })

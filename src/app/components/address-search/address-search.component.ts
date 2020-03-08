@@ -61,6 +61,5 @@ export class AddressSearchComponent implements OnInit {
         console.log(error)
       })
     }
-    alert(JSON.stringify(this.model));
   }
 }
