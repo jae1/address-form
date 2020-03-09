@@ -1,13 +1,12 @@
-import { Router } from '@angular/router';
 import { ApiService } from '../../service/api.service';
 import { Component, OnInit, NgZone } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
 import { FormlyFormOptions, FormlyFieldConfig, FormlyConfig } from '@ngx-formly/core';
 import { FormlyJsonschema } from '@ngx-formly/core/json-schema';
 
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 
 @Component({
@@ -15,37 +14,35 @@ import { tap } from 'rxjs/operators';
   templateUrl: './address-search.component.html',
   styleUrls: ['./address-search.component.css']
 })
+
 export class AddressSearchComponent implements OnInit {
-  submitted = false;
   form: FormGroup;
   model: any;
-  options: FormlyFormOptions;
   fields: FormlyFieldConfig[];
-  Address: any = [];
+  submitted = false;
+  result: object;
 
   constructor(
     private apiService: ApiService,
     private formlyJsonschema: FormlyJsonschema,
     private http: HttpClient,
-    private router: Router
-  ) {}
+    private router: Router,
+    private actRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
-    this.http.get<any>(`assets/json-schema/CountrySchema.json`).pipe(
+    this.loadForm()
+  }
+
+  loadForm() {
+    this.http.get<any>(`assets/json-schema/Countries.json`).pipe(
       tap(({ schema, model }) => {
         // this.type = 'oneOf';
         this.form = new FormGroup({});
-        this.options = {};
         this.fields = [this.formlyJsonschema.toFieldConfig(schema)];
         this.model = model;
       }),
-    ).subscribe(jsonSchema => {console.log(jsonSchema)});
-  }
-
-  searchAddresses(){
-    this.apiService.searchAddresses().subscribe((data) => {
-     this.Address = data;
-    })    
+    ).subscribe();
   }
 
   onSubmit() {
@@ -53,13 +50,17 @@ export class AddressSearchComponent implements OnInit {
     if (!this.form.valid) {
       return false;
     } else {
-      this.apiService.searchAddresses()
-      .subscribe(res => {
-        this.router.navigateByUrl('/address-list');
-        console.log('Loaded')
-      }, (error) => {
-        console.log(error)
-      })
+      let params = new URLSearchParams();
+      for (let key in this.form.value.address) {
+        params.set(key, this.form.value.address[key]);
+      }
+      this.apiService.searchAddress(params.toString())
+        .subscribe(res => {
+          this.result = res.data;
+          console.log('Loaded')
+        }, (error) => {
+          console.log(error)
+        })
     }
   }
 }

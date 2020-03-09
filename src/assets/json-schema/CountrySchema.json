@@ -1,8 +1,11 @@
 {
   "schema": {
+    "title": "Country",
+    "description": "A simple form example.",
     "type": "object",
     "oneOf": [
       {
+        "country": "Bangladesh",
         "title": "Bangladesh",
         "properties": {
           "address1": {
@@ -746,6 +749,7 @@
         }
       },
       {
+        "country": "United States",
         "title": "United States",
         "properties": {
           "address1": {

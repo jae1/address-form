@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 })
 
 export class ApiService {
-  baseUri:string = 'http://localhost:4000/api';
+  baseUri: string = 'http://localhost:4000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
@@ -17,21 +17,22 @@ export class ApiService {
   createAddress(data): Observable<any> {
     let url = `${this.baseUri}/create`;
     return this.http
-    .post(url, data)
-    .pipe(
+      .post(url, data.address)
+      .pipe(
         catchError(this.errorMgmt)
       )
   }
 
-  // Get all Addresses
-  searchAddresses(): Observable<any> {
+  // Search One Addresses
+  searchAddress(query): Observable<any> {
+    let url = `${this.baseUri}/search?` + query;
     return this.http
-    .get(`${this.baseUri}/searchAll`)
-    .pipe(
-      map((res: Response) => {
-        return res || {}
-      })
-    )
+      .get(url)
+      .pipe(
+        map((res: Response) => {
+          return res || {}
+        })
+      )
   }
 
   // Get all Addresses
@@ -41,7 +42,7 @@ export class ApiService {
 
   getCountries() {
     let url = `${this.baseUri}/country`;
-    return this.http.get(url, {headers: this.headers}).pipe(
+    return this.http.get(url, { headers: this.headers }).pipe(
       map((res: Response) => {
         return res || {}
       })
@@ -51,7 +52,7 @@ export class ApiService {
   // Get Address by ID
   getAddress(id): Observable<any> {
     let url = `${this.baseUri}/read/${id}`;
-    return this.http.get(url, {headers: this.headers}).pipe(
+    return this.http.get(url, { headers: this.headers }).pipe(
       map((res: Response) => {
         return res || {}
       }),
@@ -59,21 +60,10 @@ export class ApiService {
     )
   }
 
-    // Get Address by ID
-  getAddressBy(id): Observable<any> {
-      let url = `${this.baseUri}/read/${id}`;
-      return this.http.get(url, {headers: this.headers}).pipe(
-        map((res: Response) => {
-          return res || {}
-        }),
-        catchError(this.errorMgmt)
-      )
-    }
-
   // Update Address
   updateAddress(id, data): Observable<any> {
     let url = `${this.baseUri}/update/${id}`;
-    return this.http.put(url, data, { headers: this.headers }).pipe(
+    return this.http.put(url, data.address, { headers: this.headers }).pipe(
       catchError(this.errorMgmt)
     )
   }

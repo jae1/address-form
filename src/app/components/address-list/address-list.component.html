@@ -6,7 +6,7 @@
   <table class="table table-bordered" *ngIf="Address.length > 0">
     <thead class="table-success">
       <tr>
-        <th scope="col">Address ID</th>
+        <!-- <th scope="col">Address ID</th> -->
         <th scope="col">Address 1</th>
         <th scope="col">Address 2</th>
         <th scope="col">Address 3</th>
@@ -19,7 +19,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let address of Address; let i = index">
-        <th scope="row">{{address._id}}</th>
+        <!-- <th scope="row">{{address._id}}</th> -->
         <td>{{address.address1}}</td>
         <td>{{address.address2}}</td>
         <td>{{address.address3}}</td>

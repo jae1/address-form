@@ -15,7 +15,6 @@ let Address = new Schema({
     type: String,
     required: [true, 'Locale required.'],
     match: [/^[A-z]+$/, 'is invalid']
-
   },
 
   region: {

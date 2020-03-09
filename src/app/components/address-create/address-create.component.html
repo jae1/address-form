@@ -1,10 +1,17 @@
 <div class="row justify-content-center">
-  <div class="col-md-4 register-address">
-    <div class="card-body">
-      <form [formGroup]="form" (ngSubmit)="submit()" *ngIf="fields">
-        <formly-form [model]="model" [fields]="fields" [options]="options" [form]="form"></formly-form>
-        <button type="submit" class="btn btn-primary submit-button" [disabled]="!form.valid">Submit</button>
-      </form>
+  <div class="col-md-4 register-employee">
+    <!-- form card register -->
+    <div class="card card-outline-secondary">
+      <div class="card-header">
+        <h3 class="mb-0">Create New Address</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="submit()" *ngIf="fields">
+          <formly-form [model]="model" [fields]="fields" [form]="form">
+          </formly-form>
+          <button type="submit" class="btn btn-success btn-lg btn-block" [disabled]="!form.valid">Submit</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

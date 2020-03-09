@@ -6,78 +6,12 @@
         <h3 class="mb-0">Edit Address</h3>
       </div>
       <div class="card-body">
-        <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
-
-          <div class="form-group">
-            <label for="inputAddress1">Address 1</label>
-            <input class="form-control" type="text" formControlName="address1">
-            <!-- error -->
-            <div class="invalid-feedback" *ngIf="submitted && myForm.address1.errors?.required">
-              Address 1 is required.
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="inputAddress2">Address 2</label>
-            <input class="form-control" type="text" formControlName="address2">
-          </div>
-
-          <div class="form-group">
-            <label for="inputAddress3">Address 3</label>
-            <input class="form-control" type="text" formControlName="address3">
-          </div>
-
-          <div class="form-group">
-            <label for="inputCity">City</label>
-            <input class="form-control" type="text" formControlName="city">
-            <!-- error -->
-            <div class="invalid-feedback" *ngIf="submitted && myForm.city.errors?.required">
-              City is required.
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="inputRegion">Region</label>
-            <select class="custom-select form-control" (change)="updateProfile($event.target.value)"
-              formControlName="state">
-              <option value="">Choose State</option>
-              <option *ngFor="let addressProfile of AddressProfile" value="{{addressProfile}}">{{addressProfile}}
-              </option>
-            </select>
-            <!-- error -->
-            <div class="invalid-feedback" *ngIf="submitted && myForm.region.errors?.required">
-              Choose Region.
-            </div>
-          </div>
-
-
-          <div class="form-group">
-            <label for="inputCode">Zip</label>
-            <input class="form-control" type="text" formControlName="zip">
-            <!-- error -->
-            <div class="invalid-feedback" *ngIf="submitted && myForm.zip.errors?.required">
-              Enter Code.
-            </div>
-            <div class="invalid-feedback" *ngIf="submitted && myForm.zip.errors?.pattern">
-              Enter Numbers Only
-            </div>
-          </div>
-
-
-          <div class="form-group">
-            <label for="inputCountry">Country</label>
-            <input class="form-control" type="text" formControlName="country">
-            <!-- error -->
-            <div class="invalid-feedback" *ngIf="submitted && myForm.country.errors?.required">
-              Country is required.
-            </div>
-          </div>
-
-          <div class="form-group">
-            <button class="btn btn-success btn-lg btn-block" type="submit">Update</button>
-          </div>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="fields">
+          <formly-form [model]="model" [fields]="fields" [form]="form">
+          </formly-form>
+          <button type="submit" class="btn btn-success btn-lg btn-block" [disabled]="!form.valid">Submit</button>
         </form>
       </div>
-    </div><!-- form  -->
+    </div>
   </div>
 </div>

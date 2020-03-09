@@ -1,0 +1,164 @@
+{
+    "schema": {
+        "title": "Addresses",
+        "type": "object",
+        "properties": {
+            "address": {
+                "title": "Address",
+                "type": "object",
+                "properties": {
+                    "country": {
+                        "type": "string",
+                        "title": "Select country",
+                        "enum": [
+                            "United States",
+                            "South Korea",
+                            "Yes: More than one"
+                        ],
+                        "default": "United States"
+                    }
+                },
+                "required": [
+                    "country"
+                ],
+                "dependencies": {
+                    "country": {
+                        "oneOf": [
+                            {
+                                "properties": {
+                                    "country": {
+                                        "enum": [
+                                            "United States"
+                                        ]
+                                    },
+                                    "address1": {
+                                        "title": "Address 1",
+                                        "type": "string",
+                                        "pattern": "^\\d+\\s[A-z0-9]+\\s[A-z]+\\s*[A-z]*$"
+                                    },
+                                    "address2": {
+                                        "title": "Address 2",
+                                        "type": "string"
+                                    },
+                                    "address3": {
+                                        "title": "Address 3",
+                                        "type": "string"
+                                    },
+                                    "locale": {
+                                        "title": "City",
+                                        "type": "string"
+                                    },
+                                    "region": {
+                                        "title": "State",
+                                        "enum": [
+                                            "Alabama",
+                                            "Alaska",
+                                            "American Samoa",
+                                            "Arizona",
+                                            "Arkansas",
+                                            "California",
+                                            "Colorado",
+                                            "Connecticut",
+                                            "Delaware",
+                                            "District of Columbia",
+                                            "Florida",
+                                            "Georgia",
+                                            "Guam",
+                                            "Hawaii",
+                                            "Idaho",
+                                            "Illinois",
+                                            "Indiana",
+                                            "Iowa",
+                                            "Kansas",
+                                            "Kentucky",
+                                            "Louisiana",
+                                            "Maine",
+                                            "Maryland",
+                                            "Massachusetts",
+                                            "Michigan",
+                                            "Minnesota",
+                                            "Minor Outlying Islands",
+                                            "Mississippi",
+                                            "Missouri",
+                                            "Montana",
+                                            "Nebraska",
+                                            "Nevada",
+                                            "New Hampshire",
+                                            "New Jersey",
+                                            "New Mexico",
+                                            "New York",
+                                            "North Carolina",
+                                            "North Dakota",
+                                            "Northern Mariana Islands",
+                                            "Ohio",
+                                            "Oklahoma",
+                                            "Oregon",
+                                            "Pennsylvania",
+                                            "Puerto Rico",
+                                            "Rhode Island",
+                                            "South Carolina",
+                                            "South Dakota",
+                                            "Tennessee",
+                                            "Texas",
+                                            "U.S. Virgin Islands",
+                                            "Utah",
+                                            "Vermont",
+                                            "Virginia",
+                                            "Washington",
+                                            "West Virginia",
+                                            "Wisconsin",
+                                            "Wyoming"
+                                        ]
+                                    },
+                                    "postalCode": {
+                                        "title": "Zip Code",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "address1",
+                                    "locale",
+                                    "region",
+                                    "postalCode"
+                                ]
+                            },
+                            {
+                                "properties": {
+                                    "country": {
+                                        "enum": [
+                                            "Yes: One"
+                                        ]
+                                    },
+                                    "How old is your pet?": {
+                                        "title": "How old is your pet?",
+                                        "type": "number"
+                                    }
+                                },
+                                "required": [
+                                    "How old is your pet?"
+                                ]
+                            },
+                            {
+                                "properties": {
+                                    "country": {
+                                        "enum": [
+                                            "Yes: More than one"
+                                        ]
+                                    },
+                                    "Do you want to get rid of any?": {
+                                        "title": "Do you want to get rid of any?",
+                                        "type": "boolean"
+                                    }
+                                },
+                                "required": [
+                                    "Do you want to get rid of any?"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "model": {}
+}

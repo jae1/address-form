@@ -1,9 +1,13 @@
 import { Address } from '../../model/Address';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { ApiService } from '../../service/api.service';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
+import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
+import { FormlyFormOptions, FormlyFieldConfig, FormlyConfig } from '@ngx-formly/core';
+import { FormlyJsonschema } from '@ngx-formly/core/json-schema';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-address-edit',
@@ -13,86 +17,68 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 export class AddressEditComponent implements OnInit {
   submitted = false;
-  editForm: FormGroup;
-  addressData: Address[];
-  AddressProfile: any = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado',
-    'Connecticut', 'Delaware', 'District of Columbia', 'Florida', 'Georgia', 'Guam', 'Hawaii',
-    'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland',
-    'Massachusetts', 'Michigan', 'Minnesota', 'Minor Outlying Islands', 'Mississippi', 'Missouri',
-    'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York',
-    'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon',
-    'Pennsylvania', 'Puerto Rico', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee',
-    'Texas', 'U.S. Virgin Islands', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia',
-    'Wisconsin', 'Wyoming'];
+  form: FormGroup;
+  model: any;
+  fields: FormlyFieldConfig[];
 
   constructor(
-    public fb: FormBuilder,
+    private formlyJsonschema: FormlyJsonschema,
+    private http: HttpClient,
     private actRoute: ActivatedRoute,
     private apiService: ApiService,
     private router: Router
   ) { }
 
   ngOnInit() {
-    this.updateAddress();
+    this.loadForm();
     let id = this.actRoute.snapshot.paramMap.get('id');
     this.getAddress(id);
-    this.editForm = this.fb.group({
-      address1: [[Validators.required]],
-      address2: [''],
-      address3: [''],
-      locale: ['', [Validators.required]],
-      region: ['', [Validators.required]],
-      postalCode: ['', [Validators.required, Validators.pattern('^[0-9]{5}')]],
-      country: ['', [Validators.required]]
-    })
-  }
-
-  // Choose options with select-dropdown
-  updateProfile(e) {
-    this.editForm.get('state').setValue(e, {
-      onlySelf: true
-    })
   }
 
   // Getter to access form control
   get myForm() {
-    return this.editForm.controls;
+    return this.form.controls;
   }
 
   getAddress(id) {
-    this.apiService.getAddress(id).subscribe(data => {
-      this.editForm.setValue({
-        address1: data['address1'],
-        address2: data['address2'],
-        address3: data['address3'],
-        locale: data['locale'],
-        region: data['region'],
-        postalCode: data['postalCode'],
-        country: data['country']
+    this.apiService
+      .getAddress(id)
+      .subscribe(data => {
+        this.form
+          .setValue({
+            address1: data['address1'],
+            address2: data['address2'],
+            address3: data['address3'],
+            locale: data['locale'],
+            region: data['region'],
+            postalCode: data['postalCode'],
+            country: data['country']
+          });
       });
-    });
   };
 
-  updateAddress() {
-    this.editForm = this.fb.group({
-      address1: ['', [Validators.required]],
-      address2: [''],
-      address3: [''],
-      locale: ['', [Validators.required]],
-      region: ['', [Validators.required]],
-      postalCode: ['', [Validators.required, Validators.pattern('^[0-9]{5}')]],
-      country: ['', [Validators.required]]
-    });
+  loadForm() {
+    this.http
+      .get<any>(`assets/json-schema/Countries.json`)
+      .pipe(
+        tap(({ schema, model }) => {
+          this.form = new FormGroup({});
+          this.fields = [this.formlyJsonschema.toFieldConfig(schema)];
+          this.model = model;
+        }),
+      ).subscribe(jsonSchema => {
+        console.log(jsonSchema)
+      });
   };
 
   onSubmit() {
     this.submitted = true;
-    if (!this.editForm.valid) {
+    if (!this.form.valid) {
       return false;
     } else {
       if (window.confirm('Are you sure?')) {
         let id = this.actRoute.snapshot.paramMap.get('id');
-        this.apiService.updateAddress(id, this.editForm.value)
+        this.apiService.updateAddress(id, this.form.value)
           .subscribe(res => {
             this.router.navigateByUrl('/addresses-list');
             console.log('Content updated successfully!')
@@ -102,5 +88,4 @@ export class AddressEditComponent implements OnInit {
       }
     }
   }
-
 }
