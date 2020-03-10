@@ -60,16 +60,17 @@ export class AddressSearchComponent implements OnInit {
         }
       }
 
-      this.apiService.searchAddress(params.toString())
-        .subscribe((res: Response) => {
-          this.result = res;
-          // this.apiService.searchResults = res; 
-          console.log('res: ' + res);
-          console.log('result: ' + this.result);
-          this.router.navigateByUrl('/address-result');
-        }, (error) => {
-          console.log(error)
-        })
+      if (window.confirm('Are you sure?')) {
+        this.apiService.searchAddress(params.toString())
+          .subscribe((res: Response) => {
+            this.result = res;
+            this.apiService.searchResults = res; 
+            console.log('res: ' + this.result);
+            this.router.navigateByUrl('/address-result');
+          }, (error) => {
+            console.log(error)
+          })
+      }
     }
   }
 }
