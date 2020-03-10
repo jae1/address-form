@@ -9,6 +9,7 @@ import { AddressCreateComponent } from './components/address-create/address-crea
 import { AddressListComponent } from './components/address-list/address-list.component';
 import { AddressEditComponent } from './components/address-edit/address-edit.component';
 import { AddressSearchComponent } from './components/address-search/address-search.component';
+import { AddressResultComponent } from './components/address-result/address-result.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -71,7 +72,8 @@ export function constValidationMessage(err, field: FormlyFieldConfig) {
     ObjectTypeComponent,
     MultiSchemaTypeComponent,
     NullTypeComponent,
-    AddressSearchComponent
+    AddressSearchComponent,
+    AddressResultComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,8 @@ import { FormlyJsonschema } from '@ngx-formly/core/json-schema';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 
+import { Address } from '../../model/Address';
+
 @Component({
   selector: 'app-address-create',
   templateUrl: './address-create.component.html',
@@ -17,7 +19,7 @@ import { tap } from 'rxjs/operators';
 
 export class AddressCreateComponent implements OnInit {
   form: FormGroup;
-  model: any;
+  model: Address;
   fields: FormlyFieldConfig[];
   submitted = false;
 

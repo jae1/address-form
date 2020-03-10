@@ -1,5 +1,5 @@
 import { ApiService } from '../../service/api.service';
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 
 import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
@@ -8,6 +8,9 @@ import { FormlyJsonschema } from '@ngx-formly/core/json-schema';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
+
+import { Address } from '../../model/Address';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-address-search',
@@ -21,6 +24,7 @@ export class AddressSearchComponent implements OnInit {
   fields: FormlyFieldConfig[];
   submitted = false;
   result: object;
+  Address: any = [];
 
   constructor(
     private apiService: ApiService,
@@ -31,13 +35,12 @@ export class AddressSearchComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loadForm()
+    this.loadForm();
   }
 
   loadForm() {
     this.http.get<any>(`assets/json-schema/Countries.json`).pipe(
       tap(({ schema, model }) => {
-        // this.type = 'oneOf';
         this.form = new FormGroup({});
         this.fields = [this.formlyJsonschema.toFieldConfig(schema)];
         this.model = model;
@@ -52,12 +55,18 @@ export class AddressSearchComponent implements OnInit {
     } else {
       let params = new URLSearchParams();
       for (let key in this.form.value.address) {
-        params.set(key, this.form.value.address[key]);
+        if (this.form.value.address[key] != null) {
+          params.set(key, this.form.value.address[key]);
+        }
       }
+
       this.apiService.searchAddress(params.toString())
-        .subscribe(res => {
-          this.result = res.data;
-          console.log('Loaded')
+        .subscribe((res: Response) => {
+          this.result = res;
+          // this.apiService.searchResults = res; 
+          console.log('res: ' + res);
+          console.log('result: ' + this.result);
+          this.router.navigateByUrl('/address-result');
         }, (error) => {
           console.log(error)
         })

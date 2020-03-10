@@ -25,6 +25,7 @@
     "@ngx-formly/schematics": "^5.5.13",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
+    "fuse.js": "^3.6.1",
     "rxjs": "~6.3.3",
     "tar": "^4.4.8",
     "tslib": "^1.9.0",

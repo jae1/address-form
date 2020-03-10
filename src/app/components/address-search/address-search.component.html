@@ -9,7 +9,9 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="fields">
           <formly-form [model]="model" [fields]="fields" [form]="form">
           </formly-form>
-          <button type="submit" class="btn btn-success btn-lg btn-block" [disabled]="!form.valid">Submit</button>
+          <button type="submit" class="btn btn-success btn-lg btn-block" [disabled]="!form.valid">
+            Submit
+          </button>
         </form>
       </div>
     </div>

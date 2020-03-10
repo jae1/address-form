@@ -13,6 +13,8 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  public searchResults;
+
   // Create Address
   createAddress(data): Observable<any> {
     let url = `${this.baseUri}/create`;
@@ -25,15 +27,38 @@ export class ApiService {
 
   // Search One Addresses
   searchAddress(query): Observable<any> {
-    let url = `${this.baseUri}/search?` + query;
-    return this.http
-      .get(url)
-      .pipe(
-        map((res: Response) => {
-          return res || {}
-        })
-      )
+    let url = `${this.baseUri}/search`;
+    if (query !== "") {
+      let params = {'': query}
+      return this.http
+        .get(url, {params})
+        .pipe(
+          map((res: Response) => {
+            this.searchResults = res;
+            console.log(res);
+            return res || {}
+          })
+        )
+    }
   }
+
+   // Search One Addresses
+   searchAllAddresses(query): Observable<any> {
+    let url = `${this.baseUri}/searchAll`;
+    if (query !== "") {
+      let params = {'': query}
+      return this.http
+        .get(url, {params})
+        .pipe(
+          map((res: Response) => {
+            console.log(res);
+            return res || {}
+          })
+        )
+    }
+  }
+
+
 
   // Get all Addresses
   getAddresses() {
