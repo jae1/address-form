@@ -1,8 +1,11 @@
 {
   "schema": {
+    "title": "Country",
+    "description": "A simple form example.",
     "type": "object",
     "oneOf": [
       {
+        "country": "Bangladesh",
         "title": "Bangladesh",
         "properties": {
           "address1": {
@@ -746,6 +749,7 @@
         }
       },
       {
+        "country": "United States",
         "title": "United States",
         "properties": {
           "address1": {
@@ -763,6 +767,12 @@
             "pattern": "^$",
             "type": "string"
           },
+
+          "locale": {
+            "title": "City",
+            "pattern": "^[A-z]+$",
+            "type": "string"
+          },
           "region": {
             "title": "State",
             "pattern": "^[A-z]+$",
@@ -772,10 +782,6 @@
                 "type": "select",
                 "templateOptions": {
                   "options": [
-                    {
-                      "value": null,
-                      "label": "-----Select State-----"
-                    },
                     {
                       "label": "Alabama",
                       "value": "AL"
@@ -1016,11 +1022,6 @@
                 }
               }
             }
-          },
-          "locale": {
-            "title": "City",
-            "pattern": "^[A-z]+$",
-            "type": "string"
           },
           "postalCode": {
             "title": "Zip Code",

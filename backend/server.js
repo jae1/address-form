@@ -24,9 +24,6 @@ const app = express()
          .use(bodyParser.urlencoded({ extended: false }))
          .use(cors()); 
 
-// app.use(express.static(path.join(__dirname, 'dist/mean-stack-crud-app')));
-// app.use('/', express.static(path.join(__dirname, 'dist/mean-stack-crud-app')));app.use('/', express.static(path.join(__dirname, 'dist/mean-stack-crud-app')));
-// app.use('/api', addressRoute)
 app.use('/api', addressRoute);
 
 // Create & connect port

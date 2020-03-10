@@ -1,6 +1,6 @@
-import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../service/api.service';
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, NgZone } from '@angular/core';
+import { ActivatedRoute, Router } from "@angular/router";
 
 import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
 import { FormlyFormOptions, FormlyFieldConfig, FormlyConfig } from '@ngx-formly/core';
@@ -10,35 +10,37 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 
 import { Address } from '../../model/Address';
+import { stringify } from 'querystring';
 
 @Component({
-  selector: 'app-address-create',
-  templateUrl: './address-create.component.html',
-  styleUrls: ['./address-create.component.css'],
+  selector: 'app-address-search',
+  templateUrl: './address-search.component.html',
+  styleUrls: ['./address-search.component.css']
 })
 
-export class AddressCreateComponent implements OnInit {
+export class AddressSearchComponent implements OnInit {
   form: FormGroup;
-  model: Address;
+  model: any;
   fields: FormlyFieldConfig[];
   submitted = false;
+  result: object;
+  Address: any = [];
 
   constructor(
+    private apiService: ApiService,
     private formlyJsonschema: FormlyJsonschema,
     private http: HttpClient,
-    private actRoute: ActivatedRoute,
-    private apiService: ApiService,
-    private router: Router
+    private router: Router,
+    private actRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
-    this.loadForm()
+    this.loadForm();
   }
 
   loadForm() {
     this.http.get<any>(`assets/json-schema/Countries.json`).pipe(
       tap(({ schema, model }) => {
-        // this.type = 'oneOf';
         this.form = new FormGroup({});
         this.fields = [this.formlyJsonschema.toFieldConfig(schema)];
         this.model = model;
@@ -46,17 +48,25 @@ export class AddressCreateComponent implements OnInit {
     ).subscribe();
   }
 
-  submit() {
-    alert(JSON.stringify(this.model));
+  onSubmit() {
     this.submitted = true;
     if (!this.form.valid) {
       return false;
     } else {
+      let params = new URLSearchParams();
+      for (let key in this.form.value.address) {
+        if (this.form.value.address[key] != null) {
+          params.set(key, this.form.value.address[key]);
+        }
+      }
+
       if (window.confirm('Are you sure?')) {
-        this.apiService.createAddress(this.form.value)
-          .subscribe(res => {
-            this.router.navigateByUrl('/addresses-list');
-            console.log('Content Created Successfully!')
+        this.apiService.searchAddress(params.toString())
+          .subscribe((res: Response) => {
+            this.result = res;
+            this.apiService.searchResults = res; 
+            console.log('res: ' + this.result);
+            this.router.navigateByUrl('/address-result');
           }, (error) => {
             console.log(error)
           })
