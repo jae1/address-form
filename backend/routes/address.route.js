@@ -66,13 +66,13 @@ addressRoute.get('/search', (req, res) => {
 // Test same address in two countries
 addressRoute.get('/searchAll', (req, res) => {
   Address.find({
-    "country": new RegExp(req.body.country, "i"),
-    "address1": new RegExp(req.body.address1, "i"),
-    "address2": new RegExp(req.body.address2, "i"),
-    "address3": new RegExp(req.body.address3, "i"),
-    "locale": new RegExp(req.body.locale, "i"),
-    "region": new RegExp(req.body.region, "i"),
-    "postalCode": new RegExp(req.body.postalCode, "i")
+    "country": new RegExp(req.body.country, "gi"),
+    "address1": new RegExp(req.body.address1, "gi"),
+    "address2": new RegExp(req.body.address2, "gi"),
+    "address3": new RegExp(req.body.address3, "gi"),
+    "locale": new RegExp(req.body.locale, "gi"),
+    "region": new RegExp(req.body.region, "gi"),
+    "postalCode": new RegExp(req.body.postalCode, "gi")
   }, (error, data) => {
     if (error) {
       res.status(500).send('Error');
