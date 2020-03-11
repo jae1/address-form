@@ -20,9 +20,9 @@ mongoose.connect(dbConfig.db, {
 // Setting up port with express js
 const addressRoute = require('../backend/routes/address.route')
 const app = express()
-         .use(bodyParser.json(bodyParser.json({limit:'50mb'})))
-         .use(bodyParser.urlencoded({ extended: true, limit:'50mb' }))
-         .use(cors());
+         .use(bodyParser.json())
+         .use(bodyParser.urlencoded({ extended: false }))
+         .use(cors()); 
 
 app.use('/api', addressRoute);
 

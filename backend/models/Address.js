@@ -5,13 +5,14 @@ let Address = new Schema({
   country: String,
   address1: {
     type: String,
+
     required: [true, 'Address required.']
     // match: [/^(\w*\s*[\#\-\,\/\.\(\)\&]*)+$/, 'is invalid']
+
   },
 
-  address2: String,
-  address3: String,
   locale: {
+
     type: String
     // required: [true, 'Locale required.'],
     // match: [/^[A-z]+$/, 'is invalid']
