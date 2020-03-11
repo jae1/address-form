@@ -379,7 +379,7 @@
             "type": "string"
           },
           "locale": {
-            "title": "“ocality",
+            "title": "locality",
             "pattern": "^[A-z]+$",
             "type": "string"
           },

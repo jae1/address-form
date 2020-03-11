@@ -1,6 +1,12 @@
 const express = require('express');
-const app = express;
+const app = express();
 const addressRoute = express.Router();
+
+const bodyParser = require('body-parser');
+const url = require('url');
+const querystring = require('querystring');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 
 // Address model
@@ -53,9 +59,10 @@ addressRoute.get('/read/:id', (req, res) => {
 })
 
 // Search a single address
-addressRoute.get('/search', (req, res) => {
+addressRoute.route('/search').get((req, res) => {
   Address.findOne(req.query, (error, data) => {
     if (error) {
+      // return next(error)
       res.status(500).send('Error');
     }
     res.json(data);
@@ -63,23 +70,16 @@ addressRoute.get('/search', (req, res) => {
   })
 })
 
-// Test same address in two countries
-addressRoute.get('/searchAll', (req, res) => {
-  Address.find({
-    "country": new RegExp(req.body.country, "gi"),
-    "address1": new RegExp(req.body.address1, "gi"),
-    "address2": new RegExp(req.body.address2, "gi"),
-    "address3": new RegExp(req.body.address3, "gi"),
-    "locale": new RegExp(req.body.locale, "gi"),
-    "region": new RegExp(req.body.region, "gi"),
-    "postalCode": new RegExp(req.body.postalCode, "gi")
-  }, (error, data) => {
+// Search multiple addresses
+addressRoute.route('/searchAll').get((req, res) => {
+  Address.find(req.query, (error, data) => {
     if (error) {
+      // return next(error)
       res.status(500).send('Error');
     }
     res.json(data);
     console.log('Search successful.')
-  })
+  }).limit(10)
 })
 
 

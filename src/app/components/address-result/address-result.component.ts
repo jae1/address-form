@@ -26,9 +26,6 @@ export class AddressResultComponent implements OnInit {
   ) { this.readData() }
   ngOnInit() { }
   readData() {
-    for (var x in this.apiService.searchResults) {
-      this.searchedResults.hasOwnProperty(x) && this.searchedResults.push(this.apiService.searchResults)
-    }
     // this.searchedResults = this.apiService.searchResults;
     console.log('Result ' + JSON.stringify(this.searchedResults));
   }
