@@ -10,6 +10,21 @@ let Address = new Schema({
     // match: [/^(\w*\s*[\#\-\,\/\.\(\)\&]*)+$/, 'is invalid']
 
   },
+  address2: {
+    type: String,
+
+    // required: [true, 'Address required.']
+    // match: [/^(\w*\s*[\#\-\,\/\.\(\)\&]*)+$/, 'is invalid']
+
+  },  
+  
+  address2: {
+    type: String,
+
+    // required: [true, 'Address required.']
+    // match: [/^(\w*\s*[\#\-\,\/\.\(\)\&]*)+$/, 'is invalid']
+
+  },
 
   locale: {
 

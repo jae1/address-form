@@ -1,46 +1,40 @@
 <div class="row justify-content-center">
-  <div class="col-md-4 register-employee">
+  <div class="col-md-6">
     <!-- form card register -->
-    <div class="card card-outline-secondary">
-      <div class="card-header">
-        <h3 class="mb-0">Result</h3>
-      </div>
-      <div class="card-body">
-        <table class="table table-bordered">
-          <thead class="table-success">
-            <tr>
-              <th scope="col">Address 1</th>
-              <th scope="col">Address 2</th>
-              <th scope="col">Address 3</th>
-              <th scope="col">Locale</th>
-              <th scope="col">Region</th>
-              <th scope="col">Postal Code</th>
-              <th scope="col">Country</th>
-              <th scope="col center">Update</th>
-            </tr>
-          </thead>
-          <tbody>
-           
-            <tr *ngFor="let address of searchedResults; let i = index">
-              <td>{{address.address1}}</td>
-              <td>{{address.address2}}</td>
-              <td>{{address.address3}}</td>
-              <td>{{address.locale}}</td>
-              <td>{{address.region}}</td>
-              <td>{{address.postalCode}}</td>
-              <td>{{address.country}}</td>
-              <td class="text-center edit-block">
-                <span class="edit" [routerLink]="['/edit-address/', address._id]">
-                  <button type="button" class="btn btn-success btn-sm">Edit</button>
-                </span>
-                <span class="delete" (click)="removeAddress(address, i)">
-                  <button type="button" class="btn btn-danger btn-sm">Delete</button>
-                </span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <h3 class="mb-0">Result</h3>
+    <table class="table table-bordered">
+      <thead class="table-success">
+        <tr>
+          <th scope="col">Address 1</th>
+          <th scope="col">Address 2</th>
+          <th scope="col">Address 3</th>
+          <th scope="col">Locale</th>
+          <th scope="col">Region</th>
+          <th scope="col">Postal Code</th>
+          <th scope="col">Country</th>
+          <th scope="col center">Update</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let address of searchedResults; let i = index">
+          <td>{{address.address1}}</td>
+          <td>{{address.address2}}</td>
+          <td>{{address.address3}}</td>
+          <td>{{address.locale}}</td>
+          <td>{{address.region}}</td>
+          <td>{{address.postalCode}}</td>
+          <td>{{address.country}}</td>
+          <td class="text-center edit-block">
+            <span class="edit" [routerLink]="['/edit-address/', address._id]">
+              <button type="button" class="btn btn-success btn-sm">Edit</button>
+            </span>
+            <span class="delete" (click)="removeAddress(address, i)">
+              <button type="button" class="btn btn-danger btn-sm">Delete</button>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
