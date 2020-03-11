@@ -12,8 +12,18 @@
                         "title": "Select country",
                         "enum": [
                             "United States",
-                            "South Korea",
-                            "Yes: More than one"
+                            "Bangladesh",
+                            "Brazil",
+                            "China",
+                            "Egypt",
+                            "Ethiopia",
+                            "Germany",
+                            "Iran",
+                            "Indonesia",
+                            "India",
+                            "Iran",
+                            "Japan",
+                            "South Korea"
                         ],
                         "default": "United States"
                     }
@@ -126,32 +136,474 @@
                                 "properties": {
                                     "country": {
                                         "enum": [
-                                            "Yes: One"
+                                            "Bangladesh"
                                         ]
                                     },
-                                    "How old is your pet?": {
-                                        "title": "How old is your pet?",
-                                        "type": "number"
+                                    "address1": {
+                                        "title": "Building",
+                                        "type": "string",
+                                        "pattern": "^\\d+\\s[A-z0-9]+\\s[A-z]+\\s*[A-z]*$"
+                                    },
+                                    "address2": {
+                                        "title": "Street/Road",
+                                        "type": "string"
+                                    },
+                                    "locale": {
+                                        "title": "City",
+                                        "type": "string"
+                                    },
+                                    "postalCode": {
+                                        "title": "Postal Code",
+                                        "type": "string"
                                     }
                                 },
                                 "required": [
-                                    "How old is your pet?"
+                                    "address1",
+                                    "address2",
+                                    "locale",
+                                    "postalCode"
                                 ]
                             },
                             {
                                 "properties": {
                                     "country": {
                                         "enum": [
-                                            "Yes: More than one"
+                                            "Brazil"
                                         ]
                                     },
-                                    "Do you want to get rid of any?": {
-                                        "title": "Do you want to get rid of any?",
-                                        "type": "boolean"
+                                    "address1": {
+                                        "title": "Address 1",
+                                        "type": "string",
+                                        "pattern": "^\\d+\\s[A-z0-9]+\\s[A-z]+\\s*[A-z]*$"
+                                    },
+                                    "address2": {
+                                        "title": "Address 2",
+                                        "type": "string"
+                                    },
+                                    "address3": {
+                                        "title": "Address 3",
+                                        "type": "string"
+                                    },
+                                    "locale": {
+                                        "title": "City",
+                                        "type": "string"
+                                    },
+                                    "region": {
+                                        "title": "Province",
+                                        "type": "string"
+                                    },
+                                    "postalCode": {
+                                        "title": "Postal Code",
+                                        "type": "string"
                                     }
                                 },
                                 "required": [
-                                    "Do you want to get rid of any?"
+                                    "address1",
+                                    "locale",
+                                    "region",
+                                    "postalCode"
+                                ]
+                            },
+                            {
+                                "properties": {
+                                    "country": {
+                                        "enum": [
+                                            "China"
+                                        ]
+                                    },
+                                    "address1": {
+                                        "title": "Address 1",
+                                        "type": "string",
+                                        "pattern": "^\\d+\\s[A-z0-9]+\\s[A-z]+\\s*[A-z]*$"
+                                    },
+                                    "address2": {
+                                        "title": "Address 2",
+                                        "type": "string"
+                                    },
+                                    "address3": {
+                                        "title": "District",
+                                        "type": "string"
+                                    },
+                                    "locale": {
+                                        "title": "City",
+                                        "type": "string"
+                                    },
+                                    "region": {
+                                        "title": "State",
+                                        "type": "string"
+                                    },
+                                    "postalCode": {
+                                        "title": "Postal Code",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "address1",
+                                    "locale",
+                                    "region",
+                                    "postalCode"
+                                ]
+                            },
+                            {
+                                "properties": {
+                                    "country": {
+                                        "enum": [
+                                            "Egypt"
+                                        ]
+                                    },
+                                    "address1": {
+                                        "title": "Address 1",
+                                        "type": "string",
+                                        "pattern": "^\\d+\\s[A-z0-9]+\\s[A-z]+\\s*[A-z]*$"
+                                    },
+                                    "address2": {
+                                        "title": "Address 2",
+                                        "type": "string"
+                                    },
+                                    "address3": {
+                                        "title": "Address 3",
+                                        "type": "string"
+                                    },
+                                    "locale": {
+                                        "title": "City",
+                                        "type": "string"
+                                    },
+                                    "region": {
+                                        "title": "District",
+                                        "type": "string"
+                                    },
+                                    "postalCode": {
+                                        "title": "Postal Code",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "address1",
+                                    "locale",
+                                    "region",
+                                    "postalCode"
+                                ]
+                            },
+                            {
+                                "properties": {
+                                    "country": {
+                                        "enum": [
+                                            "Ethiopia"
+                                        ]
+                                    },
+                                    "address1": {
+                                        "title": "Address 1",
+                                        "type": "string",
+                                        "pattern": "^\\d+\\s[A-z0-9]+\\s[A-z]+\\s*[A-z]*$"
+                                    },
+                                    "address2": {
+                                        "title": "Address 2",
+                                        "type": "string"
+                                    },
+                                    "address3": {
+                                        "title": "Address 3",
+                                        "type": "string"
+                                    },
+                                    "locale": {
+                                        "title": "City",
+                                        "type": "string"
+                                    },
+                                    "region": {
+                                        "title": "District",
+                                        "type": "string"
+                                    },
+                                    "postalCode": {
+                                        "title": "Postal Code",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "address1",
+                                    "locale",
+                                    "region",
+                                    "postalCode"
+                                ]
+                            },
+                            {
+                                "properties": {
+                                    "country": {
+                                        "enum": [
+                                            "France"
+                                        ]
+                                    },
+                                    "address1": {
+                                        "title": "Address 1",
+                                        "type": "string"
+                                    },
+                                    "address2": {
+                                        "title": "Address 2",
+                                        "type": "string"
+                                    },
+                                    "address3": {
+                                        "title": "Address 3",
+                                        "type": "string"
+                                    },
+                                    "locale": {
+                                        "title": "City",
+                                        "pattern": "^[A-z]+$",
+                                        "type": "string"
+                                    },
+                                    "region": {
+                                        "title": "Region",
+                                        "pattern": "",
+                                        "type": "string"
+                                    },
+                                    "postalCode": {
+                                        "title": "Postal Code",
+                                        "pattern": "[0-9]{5}",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "address1",
+                                    "locale",
+                                    "region",
+                                    "postalCode"
+                                ]
+                            },
+                            {
+                                "properties": {
+                                    "country": {
+                                        "enum": [
+                                            "Germany"
+                                        ]
+                                    },
+                                    "address1": {
+                                        "title": "Address 1",
+                                        "type": "string",
+                                        "pattern": "^\\d+\\s[A-z0-9]+\\s[A-z]+\\s*[A-z]*$"
+                                    },
+                                    "address2": {
+                                        "title": "Address 2",
+                                        "type": "string"
+                                    },
+                                    "address3": {
+                                        "title": "Address 3",
+                                        "type": "string"
+                                    },
+                                    "locale": {
+                                        "title": "City",
+                                        "type": "string"
+                                    },
+                                    "postalCode": {
+                                        "title": "Postal Code",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "address1",
+                                    "locale",
+                                    "region",
+                                    "postalCode"
+                                ]
+                            },
+                            {
+                                "properties": {
+                                    "country": {
+                                        "enum": [
+                                            "Indonesia"
+                                        ]
+                                    },
+                                    "address1": {
+                                        "title": "Address 1",
+                                        "type": "string"
+                                    },
+                                    "address2": {
+                                        "title": "Address 2",
+                                        "type": "string"
+                                    },
+                                    "address3": {
+                                        "title": "Address 3",
+                                        "type": "string"
+                                    },
+                                    "locale": {
+                                        "title": "City",
+                                        "type": "string"
+                                    },
+                                    "region": {
+                                        "title": "Province",
+                                        "pattern": "^(\\w*\\s*[\\#\\-\\,\\/\\.\\(\\)\\&]*)+$",
+                                        "type": "string"
+                                    },
+                                    "postalCode": {
+                                        "title": "Postal Code",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "address1",
+                                    "locale",
+                                    "region",
+                                    "postalCode"
+                                ]
+                            },
+                            {
+                                "properties": {
+                                    "country": {
+                                        "enum": [
+                                            "India"
+                                        ]
+                                    },
+                                    "address1": {
+                                        "title": "Address 1",
+                                        "type": "string"
+                                    },
+                                    "address2": {
+                                        "title": "Address 2",
+                                        "type": "string"
+                                    },
+                                    "address3": {
+                                        "title": "Address 3",
+                                        "type": "string"
+                                    },
+                                    "locale": {
+                                        "title": "City",
+                                        "type": "string"
+                                    },
+                                    "region": {
+                                        "title": "Province",
+                                        "type": "string"
+                                    },
+                                    "postalCode": {
+                                        "title": "Postal Code",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "address1",
+                                    "locale",
+                                    "region",
+                                    "postalCode"
+                                ]
+                            },
+                            {
+                                "properties": {
+                                    "country": {
+                                        "enum": [
+                                            "Iran"
+                                        ]
+                                    },
+                                    "address1": {
+                                        "title": "Address 1",
+                                        "type": "string"
+                                    },
+                                    "address2": {
+                                        "title": "Address 2",
+                                        "type": "string"
+                                    },
+                                    "address3": {
+                                        "title": "Address 3",
+                                        "type": "string"
+                                    },
+                                    "locale": {
+                                        "title": "City",
+                                        "type": "string"
+                                    },
+                                    "region": {
+                                        "title": "Province",
+                                        "type": "string"
+                                    },
+                                    "postalCode": {
+                                        "title": "Postal Code",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "address1",
+                                    "locale",
+                                    "region",
+                                    "postalCode"
+                                ]
+                            },
+                            {
+                                "properties": {
+                                    "country": {
+                                        "enum": [
+                                            "Japan"
+                                        ]
+                                    },
+                                    "address1": {
+                                        "title": "Address 1",
+                                        "type": "string"
+                                    },
+                                    "address2": {
+                                        "title": "Address 2",
+                                        "type": "string"
+                                    },
+                                    "address3": {
+                                        "title": "Address 3",
+                                        "type": "string"
+                                    },
+                                    "locale": {
+                                        "title": "City",
+                                        "type": "string"
+                                    },
+                                    "region": {
+                                        "title": "Province",
+                                        "type": "string"
+                                    },
+                                    "postalCode": {
+                                        "title": "Postal Code",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "address1",
+                                    "address2",
+                                    "locale",
+                                    "region",
+                                    "postalCode"
+                                ]
+                            },
+                            {
+                                "properties": {
+                                    "country": {
+                                        "enum": [
+                                            "South Korea"
+                                        ]
+                                    },
+                                    "address1": {
+                                        "title": "Address 1",
+                                        "type": "string"
+                                    },
+                                    "address2": {
+                                        "title": "Address 2",
+                                        "type": "string"
+                                    },
+                                    "address3": {
+                                        "title": "Address 3",
+                                        "type": "string"
+                                    },
+                                    "locale": {
+                                        "title": "City",
+                                        "type": "string"
+                                    },
+                                    "region": {
+                                        "title": "Province",
+                                        "enum": [
+                                            "Seoul", "Busan", "Daegu", "Incheon", "Gwangju",
+                                            "Daejeon", "Ulsan", "Sejong", "Gyeonggi-do", "Gangwon-do",
+                                            "Chungcheongbuk-do", "Chungcheongnam-do", "Jeollabuk-do",
+                                            "Jeollanam-do", "Gyeongsangbuk-do", "Gyeongsangnam-do",
+                                            "Jeju-do"
+                                        ]
+                                    },
+                                    "postalCode": {
+                                        "title": "Postal Code",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "address1",
+                                    "address2",
+                                    "locale",
+                                    "region",
+                                    "postalCode"
                                 ]
                             }
                         ]
