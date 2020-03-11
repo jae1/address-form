@@ -85,7 +85,7 @@ addressRoute.route('/searchAll').get((req, res) => {
 
 // Update Address
 addressRoute.route('/update/:id').put((req, res, next) => {
-  Address.findOneAndUpdate(req.params.id, {
+  Address.findByIdAndUpdate(req.params.id, {
     $set: req.body
   }, (error, data) => {
     if (error) {
@@ -100,7 +100,7 @@ addressRoute.route('/update/:id').put((req, res, next) => {
 
 // Delete Address
 addressRoute.route('/delete/:id').delete((req, res, next) => {
-  Address.findOneAndRemove(req.params.id, (error, data) => {
+  Address.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {
       return next(error);
     } else {

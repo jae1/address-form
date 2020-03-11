@@ -122,12 +122,12 @@
                                     },
                                     "postalCode": {
                                         "title": "Zip Code",
-                                        "type": "string"
+                                        "type": "string",
+                                        "pattern": "^\\d{5}$"
                                     }
                                 },
                                 "required": [
                                     "address1",
-                                    "address2",
                                     "locale",
                                     "region",
                                     "postalCode"

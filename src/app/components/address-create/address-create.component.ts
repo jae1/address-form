@@ -47,7 +47,6 @@ export class AddressCreateComponent implements OnInit {
   }
 
   submit() {
-    alert(JSON.stringify(this.model));
     this.submitted = true;
     if (!this.form.valid) {
       return false;
